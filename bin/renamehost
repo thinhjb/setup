@@ -1,0 +1,25 @@
+#!/bin/bash
+
+OLD="$1"
+NEW="$2"
+
+echo $OLD
+echo $NEW
+REP="s/$OLD/$NEW/g"
+
+if [ -z "$OLD" ]; then
+    echo "No old name"
+    exit -1
+fi
+
+if [ -z "$NEW" ]; then
+    echo "No new name"
+    exit -1
+fi
+
+sudo sed -i -e $REP /etc/hostname
+sudo sed -i -e $REP /etc/hosts
+sudo sed -i -e $REP /etc/mailname
+
+sudo rm -f /etc/ssh/ssh_host*
+sudo dpkg-reconfigure openssh-server

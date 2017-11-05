@@ -1,0 +1,102 @@
+set nocompatible
+filetype off
+filetype plugin on
+filetype indent on
+
+"CtrlP fuzzy search setting
+set runtimepath^=/setup/vim/bundle/ctrlp.vim
+set runtimepath^=/setup/vim/bundle/vim-addon-linux-coding-style
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=40
+
+" make sure cpoptions does not disable key notations and treat them as literal
+set cpo&vim
+
+" Set vim color to 256
+set t_Co=256
+
+set history=700
+
+syntax on
+highlight Error None
+
+set ruler
+
+" ignore case when search
+set ignorecase
+
+" Highlight search
+set hlsearch
+
+" Highlight all search result on page
+set incsearch
+
+" Turn off sounds
+set noerrorbells
+set visualbell
+set t_vb=
+set tm=500
+
+" set auto indent
+set ai
+" set smart indent
+set si
+" set wrap lines
+set nowrap
+
+" Set relative line number
+set rnu
+
+set laststatus=2
+set statusline=
+set statusline+=%<%F		"path
+set statusline+=[%n]%r%m
+set statusline+=%=[r:%l/%L]	"Rownumber/total (%)
+set statusline+=[c:%c](%3p%%)	"Column #
+
+" highlights
+highlight LineNr ctermfg=grey ctermbg=black
+highlight CursorLineNr ctermfg=white ctermbg=black
+highlight StatusLine ctermfg=black ctermbg=grey cterm=bold
+highlight StatusLineNC ctermfg=black ctermbg=grey
+highlight TabLineFill ctermfg=black ctermbg=black cterm=bold
+highlight TabLine ctermfg=grey ctermbg=black
+highlight TabLineSel ctermfg=black ctermbg=grey
+highlight Title ctermfg=grey ctermbg=black
+
+" tabs remapping
+nnoremap th :tabprev<CR>
+nnoremap tj :tablast<CR>
+nnoremap tk :tabfirst<CR>
+nnoremap tl :tabnext<CR>
+nnoremap tn :tabnew<CR>
+nnoremap td :tabclose<CR>
+nnoremap ts :tab split<CR>
+nnoremap tt :tabedit<Space>
+nnoremap tm :tabm<Space>
+nnoremap t1 1gt
+nnoremap t2 2gt
+nnoremap t3 3gt
+nnoremap t4 4gt
+nnoremap t5 5gt
+nnoremap t6 6gt
+nnoremap t7 7gt
+nnoremap t8 8gt
+nnoremap t9 9gt
+
+map <c-l> :CtrlPLine<cr>
+
+" set wrapped lines as break lines
+map j gj
+map k gk
+
+" Disable highlight when press \ and enter
+map <silent> <leader><cr> :noh<cr>
+
+" Perl style
+autocmd FileType perl set tabstop=4|set shiftwidth=4|set expandtab|set softtabstop=4
+
+" Java style
+autocmd FileType java set tabstop=4|set shiftwidth=4|set expandtab|set softtabstop=4
+
+let g:ctrlp_clear_cache_on_exit = 0
